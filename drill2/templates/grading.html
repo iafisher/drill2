@@ -3,24 +3,25 @@
 {% block body %}
 <h1>Drill2</h1>
 
-<form>
-  <strong>Question:</strong> What is the capital of Nicaragua?
+<form action="{{ url_for('views.submit_grade') }}" method="post">
+  <strong>Question:</strong> {{ question.text }}
   <strong>Your answer:</strong>
-  <textarea disabled>{{ lipsum(1) }}</textarea>
+  <textarea name="answer" readonly>{{ answer }}</textarea>
   <strong>Correct answer:</strong>
-  <p>{{ lipsum(1) }}</p>
+  <p>{{ question.answer }}</p>
   <label>
-    <input type="radio" name="grade">
+    <input type="radio" name="grade" value="0">
     Incorrect
   </label>
   <label>
-    <input type="radio" name="grade">
+    <input type="radio" name="grade" value="50">
     Partially correct
   </label>
   <label>
-    <input type="radio" name="grade">
+    <input type="radio" name="grade" value="100">
     Correct
   </label>
+  <input type="hidden" name="question_id" value="{{ question.question_id }}">
   <input type="submit" value="Submit">
 </form>
 {% endblock %}

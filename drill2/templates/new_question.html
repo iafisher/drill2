@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1><a href="{{ url_for('views.home_page') }}">Drill2</a></h1>
+
+<form method="post">
+  <label>
+    Question
+    <textarea name="text" required></textarea>
+  </label>
+  <label>
+    Answer
+    <textarea name="answer" required></textarea>
+  </label>
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}
