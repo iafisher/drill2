@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Drill2</h1>
+
+<form>
+  <strong>Question:</strong> What is the capital of Nicaragua?
+  <strong>Your answer:</strong>
+  <textarea disabled>{{ lipsum(1) }}</textarea>
+  <strong>Correct answer:</strong>
+  <p>{{ lipsum(1) }}</p>
+  <label>
+    <input type="radio" name="grade">
+    Incorrect
+  </label>
+  <label>
+    <input type="radio" name="grade">
+    Partially correct
+  </label>
+  <label>
+    <input type="radio" name="grade">
+    Correct
+  </label>
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}
