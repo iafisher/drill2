@@ -2,7 +2,7 @@
 
 {% block body %}
 {% for message in messages %}
-<div>{{ message }}</div>
+<div class="message">{{ message }}</div>
 {% endfor %}
 
 <h1>Drill2</h1>
@@ -11,7 +11,9 @@
 </p>
 
 <form method="post">
-  <strong>Question:</strong> {{ question.text }}
+  <p>
+    <strong>Question:</strong> {{ question.text }}
+  </p>
   <textarea required name="answer"></textarea>
   <input type="hidden" name="question_id" value="{{ question.question_id }}">
   <input type="submit" value="Submit">

@@ -2,26 +2,92 @@
 
 {% block body %}
 <h1>Drill2</h1>
+<p><a href="{{ url_for('views.home_page') }}">&lt;&lt; home</a></p>
 
 <form action="{{ url_for('views.submit_grade') }}" method="post">
-  <strong>Question:</strong> {{ question.text }}
-  <strong>Your answer:</strong>
-  <textarea name="answer" readonly>{{ answer }}</textarea>
-  <strong>Correct answer:</strong>
-  <p>{{ question.answer }}</p>
-  <label>
-    <input type="radio" name="grade" value="0">
-    Incorrect
-  </label>
-  <label>
-    <input type="radio" name="grade" value="50">
-    Partially correct
-  </label>
-  <label>
-    <input type="radio" name="grade" value="100">
-    Correct
-  </label>
+  <p>
+    <strong>Question:</strong> {{ question.text }}
+  </p>
+
+  <div class="radio">
+    <label>
+      <input type="radio" name="grade" value="0">
+      Incorrect
+    </label>
+    <label>
+      <input type="radio" name="grade" value="50">
+      Partially correct
+    </label>
+    <label>
+      <input type="radio" name="grade" value="100">
+      Correct
+    </label>
+  </div>
   <input type="hidden" name="question_id" value="{{ question.question_id }}">
   <input type="submit" value="Submit">
+
+  <div class="cols">
+    <div class="col">
+      <label class="label" for="textarea-answer">Your answer:</label>
+      <textarea id="textarea-answer" name="answer" readonly>{{ answer }}</textarea>
+
+    </div>
+
+    <div class="col">
+      <label class="label">Correct answer:</label>
+      <p class="answer">{{ question.answer }}</p>
+    </div>
+  </div>
 </form>
+{% endblock %}
+
+{% block head %}
+<style>
+  form {
+    padding-bottom: 100px;
+  }
+
+  @media (min-width: 750px) {
+    .cols {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+    }
+
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    textarea {
+      flex-grow: 1;
+      resize: none;
+    }
+  }
+
+  .answer {
+    margin-top: 0;
+  }
+
+  .radio {
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 14px;
+  }
+
+  .radio * {
+    flex-grow: 1;
+    border: 1px solid var(--silver);
+    padding: 7px;
+  }
+
+  .radio input {
+    margin-right: 5px;
+  }
+
+  input[type='submit'] {
+    margin-bottom: 1rem;
+  }
+</style>
 {% endblock %}
