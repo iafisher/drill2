@@ -10,6 +10,7 @@
   <a href="{{ url_for('views.new_question_page') }}">Create a new question</a>
 </p>
 
+{% if question %}
 <form method="post">
   <p>
     <strong>Question:</strong> {{ question.text }}
@@ -18,4 +19,7 @@
   <input type="hidden" name="question_id" value="{{ question.question_id }}">
   <input type="submit" value="Submit">
 </form>
+{% else %}
+<p>No questions in database. Create one above.</p>
+{% endif %}
 {% endblock %}
