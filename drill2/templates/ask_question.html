@@ -13,8 +13,9 @@
 {% if question %}
 <form method="post">
   <p>
-    <strong>Question:</strong> {{ question.text }}
+    <strong>Question:</strong>
   </p>
+  <p class="pre-white-space">{{ question.text }}</p>
   <textarea required name="answer"></textarea>
   <input type="hidden" name="question_id" value="{{ question.question_id }}">
   <input type="submit" value="Submit">

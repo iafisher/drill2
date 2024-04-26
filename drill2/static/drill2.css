@@ -56,3 +56,7 @@ p {
   background-color: var(--aqua);
   padding: 7px;
 }
+
+.pre-white-space {
+  white-space: pre;
+}
